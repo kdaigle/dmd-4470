@@ -27,11 +27,11 @@ sunshineTheme.addEventListener("click", (event) => {
 })
 
 function setBackgroundColor(color) {
+  document.body.classList.remove(...themeNames);
   document.body.style.backgroundColor = color;
 }
 
 function chooseTheme(themeName) {
   setBackgroundColor('');
-  document.body.classList.remove(...themeNames);
   document.body.classList.add(themeName);
 }
