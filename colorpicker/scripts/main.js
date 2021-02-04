@@ -26,12 +26,17 @@ sunshineTheme.addEventListener("click", (event) => {
   chooseTheme("sunshineTheme");
 })
 
-function setBackgroundColor(color) {
+function clearTheme() {
   document.body.classList.remove(...themeNames);
+  document.body.style.backgroundColor = "";
+}
+
+function setBackgroundColor(color) {
+  clearTheme();
   document.body.style.backgroundColor = color;
 }
 
 function chooseTheme(themeName) {
-  setBackgroundColor('');
+  clearTheme();
   document.body.classList.add(themeName);
 }
