@@ -1,4 +1,7 @@
 const colorPicker = document.getElementById("colorPicker");
+const themeNames = ["darkTheme", "sunshineTheme"];
+const darkTheme = document.getElementById("darkTheme");
+const sunshineTheme = document.getElementById("sunshineTheme");
 
 window.onload = function() {
   let backgroundColor = window.localStorage.getItem("backgroundColor");
@@ -15,6 +18,20 @@ colorPicker.addEventListener("change", (event) => {
   setBackgroundColor(event.target.value);
 })
 
+darkTheme.addEventListener("click", (event) => {
+  chooseTheme("darkTheme");
+})
+
+sunshineTheme.addEventListener("click", (event) => {
+  chooseTheme("sunshineTheme");
+})
+
 function setBackgroundColor(color) {
   document.body.style.backgroundColor = color;
+}
+
+function chooseTheme(themeName) {
+  setBackgroundColor('');
+  document.body.classList.remove(...themeNames);
+  document.body.classList.add(themeName);
 }
