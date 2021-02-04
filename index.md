@@ -1,3 +1,3 @@
 Hello world! I'll be sharing my coding projects here.
 
-* [Colorpicker](/colorpicker)
+* [Colorpicker](/dmd-4470/colorpicker)
