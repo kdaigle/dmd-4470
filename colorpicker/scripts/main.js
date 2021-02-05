@@ -5,8 +5,11 @@ const sunshineTheme = document.getElementById("sunshineTheme");
 
 window.onload = function() {
   let backgroundColor = window.localStorage.getItem("backgroundColor");
+  let theme = window.localStorage.getItem("theme");
   if(backgroundColor) {
     setBackgroundColor(backgroundColor);
+  } else if(theme) {
+    chooseTheme(theme);
   }
 
   colorPicker.value = backgroundColor;
@@ -14,7 +17,6 @@ window.onload = function() {
 
 colorPicker.addEventListener("change", (event) => {
   console.log(event.target.value);
-  window.localStorage.setItem("backgroundColor", event.target.value);
   setBackgroundColor(event.target.value);
 })
 
@@ -26,17 +28,20 @@ sunshineTheme.addEventListener("click", (event) => {
   chooseTheme("sunshineTheme");
 })
 
-function clearTheme() {
+function clearThemeAndBackgroundColor() {
+  window.localStorage.clear();
   document.body.classList.remove(...themeNames);
   document.body.style.backgroundColor = "";
 }
 
 function setBackgroundColor(color) {
-  clearTheme();
+  clearThemeAndBackgroundColor();
+  window.localStorage.setItem("backgroundColor", color);
   document.body.style.backgroundColor = color;
 }
 
 function chooseTheme(themeName) {
-  clearTheme();
+  clearThemeAndBackgroundColor();
+  window.localStorage.setItem("theme", themeName);
   document.body.classList.add(themeName);
 }
