@@ -9,7 +9,6 @@ let directory = [];
 fetch("https://uconndxlab.github.io/json-phonebook-example/dxlab-staff.json")
   .then(response => response.json())
   .then(data => {
-    console.log(data);
     data.contacts.forEach(contact => {
       var person = new Person(contact);
       directory.push(person);
