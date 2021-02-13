@@ -27,5 +27,24 @@ fetch("https://uconndxlab.github.io/json-phonebook-example/dxlab-staff.json")
       return 0;
     });
 
-    console.log(directory);
+    let phonebookList = document.getElementById("phonebookList");
+    directory.forEach((person) => {
+      let personDiv = document.createElement("div");
+      let personNameHeader = document.createElement("h3");
+      personNameHeader.innerText = `${person.firstname} ${person.lastname}`
+      personDiv.appendChild(personNameHeader);
+      let personTitle = document.createElement("p");
+      personTitle.className = "title";
+      personTitle.innerText = person.title;
+      personDiv.appendChild(personTitle);
+      let personContactDetails = document.createElement("p");
+      personContactDetails.className = "contactDetails";
+      personContactDetails.innerHTML = `<a href='mailto:${ person.email }'>${person.email}</a> ${person.phone}`;
+      personDiv.appendChild(personContactDetails);
+      let personDOB = document.createElement("p");
+      personDOB.className = "dateOfBirth";
+      personDOB.innerText = person.birthdate;
+      personDiv.appendChild(personDOB);
+      phonebookList.appendChild(personDiv);
+    });
   });
